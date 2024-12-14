@@ -8,16 +8,16 @@ conn = mysql.connector.connect(
 
 cursor = conn.cursor()
 
-@staticmethod
+
 def check_id_exists(id):
     cursor.execute('''select ID from Books where ID = %s''',(id,))
     result = cursor.fetchone()
     return result is not None
 
 def check_data_exists():
-   cursor.execute('''select * from Books''')
-   result = cursor.fetchall()
-   return len(result)>0
+   cursor.execute('''select count(*) from Books''')
+   result = cursor.fetchone()
+   return result[0]>0
         
 
 class Book:
