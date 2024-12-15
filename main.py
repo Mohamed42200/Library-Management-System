@@ -1,6 +1,8 @@
 
 from Book import Book
 from Clients import client
+from Loans import Loans
+
 
 
 
@@ -25,11 +27,18 @@ copies_available = input()
 #obj = Book(3,"C++ Basics","John Doe","Programming",2023,10)
 #obj1 = Book(2, "OOP for Beginners", "Alice Smith", "Programming", 2020, 120)
 #obj1.Add_Book()
+#obj.Add_Book()
 #Book.Delete_a_book(2)
 #Book.Delete_a_book(2)
-Book.Display_Books()
+#Book.Display_Books()
+#Book.searchBook("OOP for Beginners")
 
-Book.close_connection()
+Loans.borrow_book(620205,6)
+
+Loans.close_connection()
+
+
+#Book.close_connection()
 
 #obj = client(620205,"Muhammed ","ma344pp@gmail.com","01015693094")
 #obj.update_client_information()

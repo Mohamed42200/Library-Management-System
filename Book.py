@@ -14,6 +14,11 @@ def check_id_exists(id):
     result = cursor.fetchone()
     return result is not None
 
+def check_book_exists(book):
+    cursor.execute('''select title from Books where title = %s''',(book,))
+    result = cursor.fetchone()
+    return result is not None
+
 def check_data_exists():
    cursor.execute('''select count(*) from Books''')
    result = cursor.fetchone()
@@ -91,6 +96,24 @@ class Book:
             conn.rollback() 
         else:
           print(f"The ID {ID} does not exist in the database.")
+    @staticmethod
+    def searchBook(title):
+        if check_book_exists(title):
+           
+           try:
+             cursor.execute('''select Category from Books where Title = %s''',(title,))
+             res = cursor.fetchone()
+             conn.close()
+             print(f"succesfull: {res[0]}")
+
+           except Exception as e:
+              print(f"Error..{e}")
+        else:
+           print(f"the book does not exist. ")
+              
+
+
+
 
 
 
